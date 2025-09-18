@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Details - The Drinkers Nepal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #111;
+            color: #fff;
+            padding-top: 60px;
+        }
+        .product-card {
+            background-color: #222;
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            max-width: 500px;
+            margin: auto;
+        }
+        .product-card img {
+            max-height: 300px;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="mb-4">
+    <h4>Filter & Search Products</h4>
+    <div class="row">
+        <div class="col-md-4 mb-2">
+            <select id="typeFilter" class="form-control">
+                <option value="">All Types</option>
+                <option value="Red">Red</option>
+                <option value="White">White</option>
+                <option value="Rosé">Rosé</option>
+            </select>
+        </div>
+        <div class="col-md-4 mb-2">
+            <select id="priceFilter" class="form-control">
+                <option value="">All Prices</option>
+                <option value="0-1500">Below NPR 1500</option>
+                <option value="1501-2000">NPR 1501 - 2000</option>
+                <option value="2001-99999">Above NPR 2000</option>
+            </select>
+        </div>
+        <div class="col-md-4 mb-2">
+            <input type="text" id="searchInput" class="form-control" placeholder="Search by product name...">
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        <h1 class="text-center mb-4">Product Details</h1>
+
+        <div id="product-container">
+            <!-- Product details will appear here -->
+        </div>
+    </div>
+
+    <script>
+        const container = document.getElementById('wines-container');
+const typeFilter = document.getElementById('typeFilter');
+const priceFilter = document.getElementById('priceFilter');
+const searchInput = document.getElementById('searchInput');
+let winesData = [];
+
+fetch('data/wines.json')
+    .then(response => response.json())
+    .then(data => {
+        if (data[area]) {
+            winesData = data[area];
+            displayWines(winesData);
+        } else {
+            container.innerHTML = `<p class="text-center">No wines available for this region.</p>`;
+        }
+    });
+
+function displayWines(wines) {
+    container.innerHTML = '';
+    if (wines.length === 0) {
+        container.innerHTML = `<p class="text-center">No products match your filters.</p>`;
+        return;
+    }
+    wines.forEach(wine => {
+        const col = document.createElement('div');
+        col.className = 'col-md-4';
+        col.innerHTML = `
+            <div class="wine-card">
+                <img src="${wine.image}" alt="${wine.name}" class="img-fluid">
+                <h5>${wine.name}</h5>
+                <p>Type: ${wine.type}</p>
+                <p class="text-warning">NPR ${wine.price}</p>
+                <a href="product.html?area=${area}&name=${encodeURIComponent(wine.name)}" class="btn btn-outline-warning mt-2">View Details</a>
+            </div>
+        `;
+        container.appendChild(col);
+    });
+}
+
+function applyFilters() {
+    const selectedType = typeFilter.value;
+    const priceRange = priceFilter.value;
+    const searchTerm = searchInput.value.toLowerCase().trim();
+
+    let filtered = winesData;
+
+    if (selectedType) {
+        filtered = filtered.filter(wine => wine.type === selectedType);
+    }
+
+    if (priceRange) {
+        const [min, max] = priceRange.split('-').map(Number);
+        filtered = filtered.filter(wine => wine.price >= min && wine.price <= max);
+    }
+
+    if (searchTerm) {
+        filtered = filtered.filter(wine => wine.name.toLowerCase().includes(searchTerm));
+    }
+
+    displayWines(filtered);
+}
+
+typeFilter.addEventListener('change', applyFilters);
+priceFilter.addEventListener('change', applyFilters);
+searchInput.addEventListener('input', applyFilters);
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const area = urlParams.get('area');
+        const name = decodeURIComponent(urlParams.get('name'));
+
+        fetch('data/wines.json')
+            .then(response => response.json())
+            .then(data => {
+                if (data[area]) {
+                    const product = data[area].find(wine => wine.name === name);
+
+                    if (product) {
+                        document.getElementById('product-container').innerHTML = `
+                            <div class="product-card">
+                                <img src="${product.image}" alt="${product.name}" class="img-fluid">
+                                <h3>${product.name}</h3>
+                                <p class="text-warning">${product.price}</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. This section can contain detailed descriptions about the wine's taste, aroma, and background.</p>
+                                <button class="btn btn-success mt-2">Add to Cart</button>
+                            </div>
+                        `;
+                    } else {
+                        document.getElementById('product-container').innerHTML = `<p class="text-center">Product not found.</p>`;
+                    }
+                } else {
+                    document.getElementById('product-container').innerHTML = `<p class="text-center">Invalid region selected.</p>`;
+                }
+            })
+            .catch(error => {
+                console.error("Error loading product data:", error);
+                document.getElementById('product-container').innerHTML = `<p class="text-center">Failed to load product details.</p>`;
+            });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

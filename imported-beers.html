@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imported Beers - TheDrinkersNepal</title>
+    <link rel="stylesheet" href="Dependencies/bootstrap.min.css">
+    <link rel="stylesheet" href="Dependencies/fontawesome.min.css">
+    <link rel="stylesheet" href="Dependencies/owl.carousel.min.css">
+    <link rel="stylesheet" href="Dependencies/animate.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+    body {
+        background: #111;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* Banner Section */
+    .wine-banner {
+        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/beer-banner1.webp') no-repeat center center;
+        background-size: cover;
+        background-position: center;
+        padding: 150px 0 80px;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+    .wine-banner h1 {
+        color: #fff;
+        font-size: 3em;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 20px;
+    }
+
+    /* Filter Section */
+    .filter-container {
+        background: #181818;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+    }
+    .filter-container select {
+        background: #222;
+        color: #fff;
+        border: 1px solid #333;
+        padding: 8px 15px;
+        border-radius: 4px;
+        margin-right: 15px;
+        min-width: 150px;
+    }
+
+    /* Wine Grid */
+    .wine-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 25px;
+        padding: 20px 0;
+    }
+    .wine-card {
+        background: #181818;
+        border: 1px solid #222;
+        border-radius: 12px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+    .wine-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(217,147,47,0.15);
+    }
+    .wine-image {
+        position: relative;
+        padding: 30px;
+        background: #222;
+        text-align: center;
+        height: 350px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .wine-image img {
+        max-height: 100%;
+        width: auto;
+        object-fit: contain;
+    }
+    .wine-badge {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: #d9932f;
+        color: #fff;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.9em;
+    }
+    .wine-details {
+        padding: 20px;
+    }
+    .wine-details h3 {
+        color: #fff;
+        font-size: 1.3em;
+        margin-bottom: 10px;
+    }
+    .wine-meta-info {
+        color: #999;
+        font-size: 0.9em;
+        margin-bottom: 15px;
+    }
+    .wine-details p {
+        color: #bbb;
+        margin-bottom: 15px;
+        line-height: 1.6;
+        min-height: 48px;
+    }
+    .price-action {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 15px;
+        border-top: 1px solid #222;
+    }
+    .price {
+        color: #d9932f;
+        font-size: 1.3em;
+        font-weight: bold;
+    }
+    .add-to-cart {
+        background: #d9932f;
+        color: #fff;
+        border: none;
+        padding: 8px 20px;
+        border-radius: 25px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: background 0.3s;
+    }
+    .add-to-cart:hover {
+        background: #b87c1a;
+    }
+
+    @media (max-width: 768px) {
+        .wine-banner h1 {
+            font-size: 2em;
+        }
+        .filter-container select {
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        .wine-grid {
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 10px;
+        }
+    }
+</style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="main_header header_transparent header-mobile-m">
+        <!-- Copy header from index.html -->
+    </header>
+
+    <!-- Main Content -->
+    <main>
+    <!-- Banner Section -->
+    <div class="wine-banner">
+        <div class="container">
+            <h1>Imported Beer Collection</h1>
+        </div>
+    </div>
+
+    <!-- Filter & Products Section -->
+    <div class="container">
+        <div class="filter-container">
+            <select>
+                <option>Sort by Price</option>
+                <option>Low to High</option>
+                <option>High to Low</option>
+            </select>
+            <select>
+                <option>Filter by Region</option>
+                <option>France</option>
+                <option>Italy</option>
+                <option>Spain</option>
+            </select>
+        </div>
+
+        <div class="wine-grid">
+            <!-- Wine Card Template -->
+            <div class="wine-card">
+                <div class="wine-image">
+                    <img src="images/wines/pro-6.png" alt="Pinot Noir">
+                    <span class="wine-badge">New Arrival</span>
+                </div>
+                <div class="wine-details">
+                    <h3>Pinot Noir</h3>
+                    <div class="wine-meta-info">
+                        France • 2018 • 13.5% ABV
+                    </div>
+                    <p>Elegant and smooth with notes of cherry and earth. Medium-bodied with silky tannins.</p>
+                    <div class="price-action">
+                        <span class="price">Rs. 26,669</span>
+                        <button class="add-to-cart">
+                            <i class="fa fa-shopping-cart"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wine-card">
+                <div class="wine-image">
+                    <img src="images/wines/c2.png" alt="Pinot Noir">
+                    <span class="wine-badge">New Arrival</span>
+                </div>
+                <div class="wine-details">
+                    <h3>Pinot Noir</h3>
+                    <div class="wine-meta-info">
+                        France • 2018 • 13.5% ABV
+                    </div>
+                    <p>Elegant and smooth with notes of cherry and earth. Medium-bodied with silky tannins.</p>
+                    <div class="price-action">
+                        <span class="price">Rs. 26,669</span>
+                        <button class="add-to-cart">
+                            <i class="fa fa-shopping-cart"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wine-card">
+                <div class="wine-image">
+                    <img src="images/wines/c2.png" alt="Pinot Noir">
+                    <span class="wine-badge">New Arrival</span>
+                </div>
+                <div class="wine-details">
+                    <h3>Pinot Noir</h3>
+                    <div class="wine-meta-info">
+                        France • 2018 • 13.5% ABV
+                    </div>
+                    <p>Elegant and smooth with notes of cherry and earth. Medium-bodied with silky tannins.</p>
+                    <div class="price-action">
+                        <span class="price">Rs. 26,669</span>
+                        <button class="add-to-cart">
+                            <i class="fa fa-shopping-cart"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wine-card">
+                <div class="wine-image">
+                    <img src="images/wines/c2.png" alt="Pinot Noir">
+                    <span class="wine-badge">New Arrival</span>
+                </div>
+                <div class="wine-details">
+                    <h3>Pinot Noir</h3>
+                    <div class="wine-meta-info">
+                        France • 2018 • 13.5% ABV
+                    </div>
+                    <p>Elegant and smooth with notes of cherry and earth. Medium-bodied with silky tannins.</p>
+                    <div class="price-action">
+                        <span class="price">Rs. 26,669</span>
+                        <button class="add-to-cart">
+                            <i class="fa fa-shopping-cart"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wine-card">
+                <div class="wine-image">
+                    <img src="images/wines/c2.png" alt="Pinot Noir">
+                    <span class="wine-badge">New Arrival</span>
+                </div>
+                <div class="wine-details">
+                    <h3>Pinot Noir</h3>
+                    <div class="wine-meta-info">
+                        France • 2018 • 13.5% ABV
+                    </div>
+                    <p>Elegant and smooth with notes of cherry and earth. Medium-bodied with silky tannins.</p>
+                    <div class="price-action">
+                        <span class="price">Rs. 26,669</span>
+                        <button class="add-to-cart">
+                            <i class="fa fa-shopping-cart"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wine-card">
+                <div class="wine-image">
+                    <img src="images/wines/c2.png" alt="Pinot Noir">
+                    <span class="wine-badge">New Arrival</span>
+                </div>
+                <div class="wine-details">
+                    <h3>Pinot Noir</h3>
+                    <div class="wine-meta-info">
+                        France • 2018 • 13.5% ABV
+                    </div>
+                    <p>Elegant and smooth with notes of cherry and earth. Medium-bodied with silky tannins.</p>
+                    <div class="price-action">
+                        <span class="price">Rs. 26,669</span>
+                        <button class="add-to-cart">
+                            <i class="fa fa-shopping-cart"></i>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <!-- Duplicate this card structure for more wines -->
+        </div>
+    </div>
+</main>
+    <!-- Footer Section -->
+    <footer class="footer">
+        <!-- Copy footer from index.html -->
+    </footer>
+
+    <!-- Scripts -->
+    <script src="Dependencies/jquery.min.js"></script>
+    <script src="Dependencies/bootstrap.min.js"></script>
+    <script src="Dependencies/owl.carousel.min.js"></script>
+   <script src="Dependencies/wow.min.js"></script>
+    <script src="main.js"></script>
+
+</body>
+</html>

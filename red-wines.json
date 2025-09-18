@@ -1,0 +1,21 @@
+[
+  {
+    "name": "Pinot Noir",
+    "image": "images/product/product-1.png",
+    "description": "Elegant and fruity red wine with soft tannins and a silky finish.",
+    "price": "26669"
+  },
+  {
+    "name": "Cabernet Sauvignon",
+    "image": "images/product/product-2.png",
+    "description": "Rich, bold, and full-bodied with notes of blackcurrant and oak.",
+    "price": "29999"
+  },
+  {
+    "name": "Merlot",
+    "image": "images/product/product-3.png",
+    "description": "Soft, ripe, and elegant texture with plum and chocolate notes.",
+    "price": "24999"
+  }
+  // Add more wines as needed
+]

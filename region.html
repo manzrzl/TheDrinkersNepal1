@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wines by Region - The Drinkers Nepal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #111;
+            color: #fff;
+            padding-top: 60px;
+        }
+        .wine-card {
+            background-color: #222;
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .wine-card img {
+            max-height: 200px;
+            margin-bottom: 10px;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="mb-4">
+        <h1 class="text-center mb-4" id="region-title">Wines for: </h1>
+    <h4>Filter Products</h4>
+    <div class="row">
+        <div class="col-md-4 mb-2">
+            <select id="typeFilter" class="form-control">
+                <option value="">All Types</option>
+                <option value="Red">Red</option>
+                <option value="White">White</option>
+                <option value="Rosé">Rosé</option>
+            </select>
+        </div>
+        <div class="col-md-4 mb-2">
+            <select id="priceFilter" class="form-control">
+                <option value="">All Prices</option>
+                <option value="0-1500">Below NPR 1500</option>
+                <option value="1501-2000">NPR 1501 - 2000</option>
+                <option value="2001-99999">Above NPR 2000</option>
+            </select>
+        </div>
+    </div>
+</div>
+    <div class="container">
+        <h1 class="text-center mb-4" id="region-title"></h1>
+
+        <div class="row" id="wines-container">
+            <!-- Wines will be displayed here -->
+        </div>
+    </div>
+    
+
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const area = urlParams.get('area');
+
+        document.getElementById('region-title').textContent = `Wines for: ${area}`;
+
+        const container = document.getElementById('wines-container');
+
+        fetch('data/wines.json')
+            .then(response => response.json())
+            .then(data => {
+                if (data[area]) {
+                    data[area].forEach(wine => {
+                        const col = document.createElement('div');
+                        col.className = 'col-md-4';
+
+                        col.innerHTML = `
+                            <div class="wine-card">
+                                <img src="${wine.image}" alt="${wine.name}" class="img-fluid">
+                                <h5>${wine.name}</h5>
+                                <p class="text-warning">${wine.price}</p>
+                                <button class="btn btn-outline-warning mt-2">View Details</button>
+                            </div>
+                        `;
+                        container.appendChild(col);
+                    });
+                } else {
+                    container.innerHTML = `
+                        <div class="col-12">
+                            <p class="text-center">No wines available for this region.</p>
+                        </div>
+                    `;
+                }
+            })
+            .catch(error => {
+                console.error("Error loading wine data:", error);
+                container.innerHTML = `
+                    <div class="col-12">
+                        <p class="text-center">Failed to load products. Please try again later.</p>
+                    </div>
+                `;
+            });
+
+            
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

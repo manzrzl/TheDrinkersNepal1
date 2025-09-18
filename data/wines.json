@@ -1,0 +1,68 @@
+{
+  "Kathmandu": [
+    {
+      "name": "Giordano Barolo Piedmont DOCG",
+      "image": "images/Giordano Barolo Piedmont DOCG.png",
+      "price": 1500,
+      "type": "White"
+    },
+    {
+      "name": "GIORDANO PIEMONTE DOLCETTO",
+      "image": "images/GIORDANO PIEMONTE DOLCETTO.png",
+      "price": 2200,
+      "type": "Red"
+    },
+    {
+      "name": "Morcheuli Escape White Dry",
+      "image": "images/Morcheuli Escape White Dry.png",
+      "price": 2200,
+      "type": "Red"
+    }
+  ],
+  "Hetauda": [
+    {
+      "name": "Giordano Barolo Piedmont DOCG",
+      "image": "images/Giordano Barolo Piedmont DOCG.png",
+      "price": 1500,
+      "type": "White"
+    },
+    {
+      "name": "GIORDANO PIEMONTE DOLCETTO",
+      "image": "images/GIORDANO PIEMONTE DOLCETTO.png",
+      "price": 2200,
+      "type": "Red"
+    },
+    {
+      "name": "Morcheuli Escape White Dry",
+      "image": "images/Morcheuli Escape White Dry.png",
+      "price": 2200,
+      "type": "Red"
+    }
+  ],
+  "Pokhara": [
+    {
+      "name": "Giordano Barolo Piedmont DOCG",
+      "image": "images/Giordano Barolo Piedmont DOCG.png",
+      "price": 1500,
+      "type": "White"
+    },
+    {
+      "name": "GIORDANO PIEMONTE DOLCETTO",
+      "image": "images/GIORDANO PIEMONTE DOLCETTO.png",
+      "price": 2200,
+      "type": "Red"
+    },
+    {
+      "name": "Morcheuli Escape White Dry",
+      "image": "images/Morcheuli Escape White Dry.png",
+      "price": 2200,
+      "type": "Red"
+    },
+    {
+      "name": "Hello",
+      "image": "images/fonepay-qr.jpg",
+      "price": 2200,
+      "type": "Red"
+    }
+  ]
+}
